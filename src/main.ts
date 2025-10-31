@@ -1,7 +1,7 @@
 // Changed the core currency to "Grains of Sand"
-let grainsOfSand: number = 0;
+let grainCount: number = 0;
 
-const costMultiplier: number = 1.15; // 15% increase per purchase
+const priceGrowthRate: number = 1.15; // 15% increase per purchase
 
 // DATA-DRIVEN DESIGN
 // All upgrade information is now stored in this single array.
@@ -103,14 +103,14 @@ gameItems.forEach((item) => {
 });
 
 // Get main elements
-const createSandButton = document.getElementById("createSandButton")!;
+const grainClickButton = document.getElementById("createSandButton")!;
 const sandCounterElement = document.getElementById("sandCounter")!;
 const gpsDisplayElement = document.getElementById("gpsDisplay")!;
 
 // Main clicker event
-createSandButton.addEventListener("click", () => {
-  grainsOfSand++;
-  sandCounterElement.textContent = Math.floor(grainsOfSand).toString();
+grainClickButton.addEventListener("click", () => {
+  grainCount++;
+  sandCounterElement.textContent = Math.floor(grainCount).toString();
 });
 
 // Loop to create a single, generic event listener for all purchase buttons.
@@ -119,12 +119,12 @@ gameItems.forEach((item) => {
     `purchase-${item.id}`,
   ) as HTMLButtonElement;
   purchaseButton.addEventListener("click", () => {
-    if (grainsOfSand >= item.currentCost) {
-      grainsOfSand -= item.currentCost;
+    if (grainCount >= item.currentCost) {
+      grainCount -= item.currentCost;
       item.count++;
       // Recalculate the cost for the next upgrade
       item.currentCost = Math.floor(
-        item.baseCost * Math.pow(costMultiplier, item.count),
+        item.baseCost * Math.pow(priceGrowthRate, item.count),
       );
     }
   });
@@ -148,10 +148,10 @@ function gameLoop(timestamp: number) {
     return total + item.count * item.gps;
   }, 0);
 
-  grainsOfSand += totalGrainsPerSecond * deltaTime;
+  grainCount += totalGrainsPerSecond * deltaTime;
 
   // Update main display
-  sandCounterElement.textContent = Math.floor(grainsOfSand).toString();
+  sandCounterElement.textContent = Math.floor(grainCount).toString();
   gpsDisplayElement.textContent = totalGrainsPerSecond.toFixed(1);
 
   // Loop through items to update their individual UI elements.
@@ -164,7 +164,7 @@ function gameLoop(timestamp: number) {
     countDisplay.textContent = item.count.toString();
     purchaseButton.textContent =
       `${item.name} (Cost: ${item.currentCost} Grains)`;
-    purchaseButton.disabled = grainsOfSand < item.currentCost;
+    purchaseButton.disabled = grainCount < item.currentCost;
   });
 
   requestAnimationFrame(gameLoop);
