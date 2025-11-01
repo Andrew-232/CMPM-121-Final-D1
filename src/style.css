@@ -4,8 +4,13 @@
   border: 1px solid salmon;
 }
 
+/* I also looked at https://github.com/dfang10/Incremental-Demo-1-Fixed demo and 
+   liked how their game had a gradient background so I made mine have a gradient background 
+  as well. 
+*/
 body {
-  background-color: khaki;
+  background: linear-gradient(to bottom right, khaki, rgb(158, 150, 33));
+  min-height: 100vh;
 }
 
 .header-image {
