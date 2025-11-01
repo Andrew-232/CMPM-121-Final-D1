@@ -1,10 +1,8 @@
-// Changed the core currency to "Grains of Sand"
+// Game State
 let grainCount: number = 0;
-
 const priceGrowthRate: number = 1.15; // 15% increase per purchase
 
-// DATA-DRIVEN DESIGN
-// All upgrade information is now stored in this single array.
+// Game item interface and DATA
 interface GameItem {
   name: string;
   id: string; // Unique ID for HTML elements
@@ -68,7 +66,7 @@ const gameItems: GameItem[] = [
   },
 ];
 
-// The main HTML structure with a placeholder for my upgrades.
+// UI construction
 document.body.innerHTML = `
   <style>
     .header-image { width: 400px; border-radius: 10px; }
@@ -107,7 +105,7 @@ const grainClickButton = document.getElementById("createSandButton")!;
 const sandCounterElement = document.getElementById("sandCounter")!;
 const gpsDisplayElement = document.getElementById("gpsDisplay")!;
 
-// Main clicker event
+// Event handlers
 grainClickButton.addEventListener("click", () => {
   grainCount++;
   sandCounterElement.textContent = Math.floor(grainCount).toString();
