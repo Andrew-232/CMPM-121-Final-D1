@@ -1,4 +1,6 @@
 import "./style.css";
+import mainPicture from "./grains-of-sand.jpg";
+import buttonPicture from "./single-grain.jpg";
 
 // Game State
 let grainCount: number = 0;
@@ -69,14 +71,18 @@ const gameItems: GameItem[] = [
 ];
 
 // UI construction
+// If this works great!
+// I looked at the code from https://github.com/jellyb3e/cmpm-121-f25-d1-juliamanou
+// Looked at his commit history to see where the button info to make the pictures appear
+// would be.
 document.body.innerHTML = `
   <h1>Grains of Sand</h1>
-  <img src="grains-of-sand.jpg" class="header-image" alt="Grains of Sand Title Image">
+  <img src="${mainPicture}" class="header-image" alt="Grains of Sand Title Image">
   
   <p>Grains of Sand: <span id="sandCounter">0</span></p>
   <p>Grains per second: <span id="gpsDisplay">0</span></p>
   
-  <img src="single-grain.jpg" id="createSandButton" alt="Click to create a grain of sand">
+  <img src="${buttonPicture}" id="createSandButton" alt="Click to create a grain of sand">
   
   <div id="upgradesContainer"></div>
 `;
