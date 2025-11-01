@@ -1,3 +1,5 @@
+import "./style.css";
+
 // Game State
 let grainCount: number = 0;
 const priceGrowthRate: number = 1.15; // 15% increase per purchase
@@ -68,24 +70,16 @@ const gameItems: GameItem[] = [
 
 // UI construction
 document.body.innerHTML = `
-  <style>
-    .header-image { width: 400px; border-radius: 10px; }
-    #createSandButton { width: 200px; cursor: pointer; transition: transform 0.1s; }
-    #createSandButton:active { transform: scale(0.95); }
-  </style>
-
   <h1>Grains of Sand</h1>
-  <img src="/https://github.com/Andrew-232/CMPM-121-Final-D1/grains-of-sand.jpg" class="header-image" alt="Grains of Sand Title Image">
+  <img src="grains-of-sand.jpg" class="header-image" alt="Grains of Sand Title Image">
   
   <p>Grains of Sand: <span id="sandCounter">0</span></p>
   <p>Grains per second: <span id="gpsDisplay">0</span></p>
   
-  <img src="/https://github.com/Andrew-232/CMPM-121-Final-D1/single-grain.jpg" id="createSandButton" alt="Click to create a grain of sand">
+  <img src="single-grain.jpg" id="createSandButton" alt="Click to create a grain of sand">
   
   <div id="upgradesContainer"></div>
 `;
-
-document.body.style.backgroundColor = "khaki";
 
 const upgradesContainer = document.getElementById("upgradesContainer")!;
 

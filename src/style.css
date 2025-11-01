@@ -3,3 +3,22 @@
   vertical-align: top;
   border: 1px solid salmon;
 }
+
+body {
+  background-color: khaki;
+}
+
+.header-image {
+  width: 400px;
+  border-radius: 10px;
+}
+
+#createSandButton {
+  width: 200px;
+  cursor: pointer;
+  transition: transform 0.1s;
+}
+
+#createSandButton:active {
+  transform: scale(0.95);
+}
